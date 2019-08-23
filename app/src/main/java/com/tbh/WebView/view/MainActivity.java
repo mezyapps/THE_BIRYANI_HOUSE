@@ -2,10 +2,15 @@ package com.tbh.WebView.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -23,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         find_View_IDs();
         events();
+
     }
 
     private void find_View_IDs() {
