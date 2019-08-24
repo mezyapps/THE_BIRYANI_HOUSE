@@ -3,25 +3,30 @@ package com.tbh.WebView.notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.tbh.WebView.R;
+import com.tbh.WebView.database.DatabaseHandler;
+import com.tbh.WebView.model.NotificationModel;
 import com.tbh.WebView.view.MainActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -29,6 +34,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "FCM Service";
     String doctor_name;
     public static final String CHANNEL_ID = "mychannelid";
+    private DatabaseHandler databaseHandler;
 
 
     NotificationManager notificationManager;
@@ -56,14 +62,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         mContext = this;
 
-           String title = null, description = null,sound=null;
+           String title = null, description = null,image=null;
 
            description=remoteMessage.getNotification().getBody();
            title=remoteMessage.getNotification().getTitle();
-           sound=remoteMessage.getNotification().getSound();
+           image=remoteMessage.getNotification().getIcon();
 
-
-
+           databaseHandler=new DatabaseHandler(mContext);
+           databaseHandler.addNotification(title,description);
         sendNotification(title,description);
 
     }
@@ -128,5 +134,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notificationManager.notify(m, builder.build());
         }
     }
+
+
 }
 

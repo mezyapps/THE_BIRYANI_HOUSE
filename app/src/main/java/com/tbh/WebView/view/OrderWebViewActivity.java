@@ -21,6 +21,8 @@ public class OrderWebViewActivity extends AppCompatActivity {
     private WebView webViewTBH;
     private ShowProgress showProgress;
     private ImageView iv_back;
+    private ImageView iv_notification;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class OrderWebViewActivity extends AppCompatActivity {
     @SuppressLint("SetJavaScriptEnabled")
     private void find_View_IDs() {
         showProgress=new ShowProgress(OrderWebViewActivity.this);
+        iv_notification=findViewById(R.id.iv_notification);
         webViewTBH=findViewById(R.id.webViewTBH);
         iv_back=findViewById(R.id.iv_back);
         webViewTBH.getSettings().setLoadsImagesAutomatically(true);
@@ -63,6 +66,13 @@ public class OrderWebViewActivity extends AppCompatActivity {
             }
         });
 
+        iv_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(OrderWebViewActivity.this,NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

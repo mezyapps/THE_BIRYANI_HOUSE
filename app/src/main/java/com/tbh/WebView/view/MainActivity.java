@@ -2,24 +2,23 @@ package com.tbh.WebView.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.tbh.WebView.R;
+import com.tbh.WebView.database.DatabaseHandler;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btn_order_now;
     private boolean doubleBackToExitPressedOnce = false;
+    private ImageView iv_notification;
+    private DatabaseHandler databaseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +32,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void find_View_IDs() {
         btn_order_now=findViewById(R.id.btn_order_now);
+        iv_notification=findViewById(R.id.iv_notification);
+        databaseHandler=new DatabaseHandler(MainActivity.this);
+
+
+        Bundle bundle = getIntent().getExtras();
+
+        Intent intent = getIntent();
+
+        if (intent != null) {
+            String title = intent.getStringExtra("TITLE");
+            String description = intent.getStringExtra("DESCRIPTION");
+            if(!(title==null||description==null)) {
+                databaseHandler.addNotification(title, description);
+            }
+        }
+
+
     }
 
     private void events() {
@@ -42,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(MainActivity.this,OrderWebViewActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+        iv_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,NotificationActivity.class);
+                startActivity(intent);
             }
         });
     }
