@@ -6,9 +6,12 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -32,7 +35,7 @@ public class OrderWebViewActivity extends AppCompatActivity {
         events();
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
+
     private void find_View_IDs() {
         showProgress=new ShowProgress(OrderWebViewActivity.this);
         iv_notification=findViewById(R.id.iv_notification);
@@ -40,8 +43,13 @@ public class OrderWebViewActivity extends AppCompatActivity {
         iv_back=findViewById(R.id.iv_back);
         webViewTBH.getSettings().setLoadsImagesAutomatically(true);
         webViewTBH.getSettings().setJavaScriptEnabled(true);
+        webViewTBH.getSettings().setDomStorageEnabled(true);
+        webViewTBH.getSettings().setLoadsImagesAutomatically(true);
         webViewTBH.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        webViewTBH.loadUrl("https://thebiryanihouse.petpooja.com/");
+        webViewTBH.setWebChromeClient(new WebChromeClient());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            webViewTBH.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
         webViewTBH.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon)
@@ -53,7 +61,7 @@ public class OrderWebViewActivity extends AppCompatActivity {
                // showProgress.dismissDialog();
             }
         });
-
+        webViewTBH.loadUrl("https://thebiryanihouse.petpooja.com/");
     }
 
     private void events() {
