@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "397848077351",
+    "firebase_url": "https://thebiryanihouse-bf27a.firebaseio.com",
+    "project_id": "thebiryanihouse-bf27a",
+    "storage_bucket": "thebiryanihouse-bf27a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397848077351:android:ea1b0cba3d54ea63",
+        "android_client_info": {
+          "package_name": "com.tbh.WebView"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "397848077351-bu92kturksmdsj1naiepee5ifppueehv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tbh.WebView",
+            "certificate_hash": "32eef84a158c91d9c250eb8f27aa3fa3dff75d8c"
+          }
+        },
+        {
+          "client_id": "397848077351-hth3p3j1u61vtiummbhjgn3kmf69m8k8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdLrYuUOuhV2yo9ZUzLOassAHOjXyxF5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "397848077351-hth3p3j1u61vtiummbhjgn3kmf69m8k8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
