@@ -25,6 +25,7 @@ import com.tbh.WebView.R;
 import com.tbh.WebView.database.DatabaseHandler;
 import com.tbh.WebView.model.NotificationModel;
 import com.tbh.WebView.view.MainActivity;
+import com.tbh.WebView.view.NotificationActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -84,7 +85,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         Intent intent;
 
-        intent = new Intent(this, MainActivity.class);
+        intent = new Intent(this, NotificationActivity.class);
         intent.putExtra("TITLE", title);
         intent.putExtra("DESCRIPTION", description);
 

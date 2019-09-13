@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TBH</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="offer_start_date">Offer Start Date</string>
+    <string name="offer_end_date">Offer End Date</string>
 </resources>

@@ -41,7 +41,8 @@ public class SplashActivity extends AppCompatActivity {
         RxPermissions.getInstance(SplashActivity.this)
                 .request(
                         android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.VIBRATE)
                 .subscribe(new Action1<Boolean>() {
                     @Override
                     public void call(Boolean aBoolean) {

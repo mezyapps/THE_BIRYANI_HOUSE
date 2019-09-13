@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.tbh.WebView.R;
+import com.tbh.WebView.apicommon.BaseApi;
 import com.tbh.WebView.model.NotificationModel;
 import com.tbh.WebView.view.NotificationActivity;
 
@@ -20,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.StringTokenizer;
+
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MYViewHolder> {
 
@@ -43,7 +45,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(@NonNull MYViewHolder holder, int position) {
         final NotificationModel notificationModel = notificationModelArrayList.get(position);
-        String imageUrl = "http://mezyapps.com/tbh/" + folderPath + "/" + notificationModel.getImage_path();
+        String imageUrl = BaseApi.IMAGE_PATH + folderPath + "/" + notificationModel.getImage_path();
         Picasso.with(mContext).load(imageUrl).into(holder.iv_offer_image);
         holder.textTitle.setText(notificationModel.getTitle());
         holder.textDescription.setText(notificationModel.getDescription());
