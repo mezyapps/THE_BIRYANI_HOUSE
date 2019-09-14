@@ -69,6 +69,7 @@ public class OrderWebViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(OrderWebViewActivity.this,MainActivity.class);
+                intent.putExtra("back","true");
                 startActivity(intent);
                 finish();
             }

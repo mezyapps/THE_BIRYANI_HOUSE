@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         databaseHandler = new DatabaseHandler(MainActivity.this);
 
 
-        Bundle bundle = getIntent().getExtras();
+       /* Bundle bundle = getIntent().getExtras();
 
         Intent intent = getIntent();
 
@@ -79,12 +79,16 @@ public class MainActivity extends AppCompatActivity {
                 databaseHandler.addNotification(title, description);
             }
         }
+        */
 
+        Bundle bundle = getIntent().getExtras();
+        if (bundle == null) {
+           offerList();
+        }
 
     }
 
     private void events() {
-        offerList();
         btn_order_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -226,9 +230,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
+  /*  @Override
     protected void onRestart() {
         super.onRestart();
         offerList();
-    }
+    }*/
 }
