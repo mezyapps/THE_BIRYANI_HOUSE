@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.tbh.WebView">
+    package="com.tbh.New_WebView">
 
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -23,13 +23,13 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".view.NotificationActivity"
+        <activity android:name="com.tbh.New_WebView.view.NotificationActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".view.OrderWebViewActivity"
+            android:name="com.tbh.New_WebView.view.OrderWebViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.SplashActivity"
+            android:name="com.tbh.New_WebView.view.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,11 +38,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.MainActivity"
+            android:name="com.tbh.New_WebView.view.MainActivity"
             android:screenOrientation="portrait" />
 
         <service
-            android:name=".notification.MyFirebaseMessagingService"
+            android:name="com.tbh.New_WebView.notification.MyFirebaseMessagingService"
             tools:ignore="ExportedService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
