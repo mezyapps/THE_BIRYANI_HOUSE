@@ -8,8 +8,8 @@ android {
         applicationId "com.tbh.New_WebView"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 5
-        versionName "1.4"
+        versionCode 8
+        versionName "1.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

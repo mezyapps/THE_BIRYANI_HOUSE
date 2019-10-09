@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -44,9 +45,11 @@ public class OrderWebViewActivity extends AppCompatActivity {
         webViewTBH.getSettings().setLoadsImagesAutomatically(true);
         webViewTBH.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webViewTBH.setWebChromeClient(new WebChromeClient());
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webViewTBH.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
+
         webViewTBH.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon)
@@ -56,6 +59,21 @@ public class OrderWebViewActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                // showProgress.dismissDialog();
+            }
+
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (url.startsWith("tel:")) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(url));
+                    startActivity(intent);
+                    return true;
+                }
+                if (url.startsWith("mailto:"))
+                {
+                    Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(url));
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
             }
         });
         webViewTBH.loadUrl("https://thebiryanihouse.petpooja.com/");
@@ -84,4 +102,5 @@ public class OrderWebViewActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
     }
+
 }
