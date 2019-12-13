@@ -85,7 +85,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
 
                 String imageUrl = BaseApi.IMAGE_PATH+folderPath + "/" + notificationModelArrayList.get(position).getImage_path();
-                Picasso.with(offerDialog.getContext()).load(imageUrl).into(offer_image);
+                Picasso.with(offerDialog.getContext())
+                        .load(imageUrl)
+                       .fit()
+                        .priority(Picasso.Priority.HIGH)
+                        .into(offer_image);
                 textTitle.setText(notificationModelArrayList.get(position).getTitle());
                 textDescription.setText(notificationModelArrayList.get(position).getDescription());
                 String date=notificationModelArrayList.get(position).getStart_date();

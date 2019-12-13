@@ -137,7 +137,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         String imageUrl = BaseApi.IMAGE_PATH+folderPath + "/" + notificationModelArrayList.get(0).getImage_path();
-        Picasso.with(offerDialog.getContext()).load(imageUrl).into(offer_image);
+        Picasso.with(offerDialog.getContext())
+                .load(imageUrl)
+                .fit()
+                .priority(Picasso.Priority.HIGH)
+                .into(offer_image);
         textTitle.setText(notificationModelArrayList.get(0).getTitle());
         textDescription.setText(notificationModelArrayList.get(0).getDescription());
         String date=notificationModelArrayList.get(0).getStart_date();
